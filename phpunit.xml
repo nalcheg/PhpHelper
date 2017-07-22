@@ -1,0 +1,16 @@
+<phpunit bootstrap="vendor/composer/autoload_psr4.php" colors="true">
+    <testsuites>
+        <testsuite name="tests">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory>src</directory>
+            <exclude>
+                <directory>vendor</directory>
+                <directory>tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
