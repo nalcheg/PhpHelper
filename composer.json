@@ -3,6 +3,7 @@
   "description": "PHP helper class",
   "version": "0.0.1",
   "type": "library",
+  "minimum-stability": "stable",
   "keywords": [
     "helper",
     "converting"
