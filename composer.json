@@ -18,13 +18,9 @@
     }
   ],
   "support": {
-    "email": "support@exemple.org",
-    "issues": "https://github.com/jolicode/jane/issues",
-    "forum": "http://www.my-forum.com/",
-    "wiki": "http://www.my-wiki.com/",
-    "irc": "irc://irc.freenode.org/composer",
-    "source": "https://github.com/jolicode/jane",
-    "docs": "https://github.com/jolicode/jane/wiki"
+    "email": "nalcheg@gmail.com",
+    "source": "https://github.com/nalcheg/PhpHelper",
+    "docs": "https://github.com/nalcheg/PhpHelper/blob/master/README.md"
   },
   "autoload": {
     "psr-4": {
