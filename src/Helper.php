@@ -14,7 +14,7 @@ class Helper
 
     /**
      * Convert MySQL datetime to Russian datetime, for example
-     * 2017-05-29 05:48:20 converts to 29.05.2017 05:48:20
+     * `2017-05-29 05:48:20` converts to `29.05.2017 05:48:20`
      *
      * @param $datetime
      * @return mixed
@@ -23,7 +23,7 @@ class Helper
     public static function datetimeFromMysqlToRussian($datetime)
     {
         $dateRegex = '/(19|20)\d\d[- \-.](0[1-9]|1[012])[- \-.](0[1-9]|[12][0-9]|3[01])/';
-        if(!preg_match($dateRegex, $datetime)) {
+        if (!preg_match($dateRegex, $datetime)) {
             throw new \Exception('Not right input date format for ::datetimeFromMysqlToRussian');
         }
 
@@ -38,4 +38,29 @@ class Helper
 
         return $stringRussianDatetime;
     }
+
+    /**
+     * Convert date format ddmmyy to like Mysql date, for example
+     * `240316` converts to `2016-03-24`
+     *
+     * @param $sixDigitDate
+     * @param int $yearPrefix - mayby `19` or `20`
+     * @return string
+     * @throws \Exception
+     */
+    public static function dateFromSixDigitsToMysql($sixDigitDate, $yearPrefix = 20)
+    {
+        if (!preg_match('/(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[012])(0[1-9]|1[1-9])/', $sixDigitDate)) {
+            throw new \Exception('Not right input date format for ::dateFromSixDigitsToMysql($sixDigitDate)');
+        }
+        if (!in_array($yearPrefix, [19, 20])) {
+            throw new \Exception('Not right input date format for ::dateFromSixDigitsToMysql($yearPrefix)');
+        }
+        $day = substr($sixDigitDate, 0, 2);
+        $month = substr($sixDigitDate, 2, 2);
+        $year = $yearPrefix . substr($sixDigitDate, 4, 2);
+
+        return $year . '-' . $month . '-' . $day;
+    }
+
 }
