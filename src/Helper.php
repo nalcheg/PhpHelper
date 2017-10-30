@@ -44,7 +44,7 @@ class Helper
      * `240316` converts to `2016-03-24`
      *
      * @param $sixDigitDate
-     * @param int $yearPrefix - mayby `19` or `20`
+     * @param int $yearPrefix - maybe `19` or `20`
      * @return string
      * @throws \Exception
      */
@@ -59,6 +59,26 @@ class Helper
         $day = substr($sixDigitDate, 0, 2);
         $month = substr($sixDigitDate, 2, 2);
         $year = $yearPrefix . substr($sixDigitDate, 4, 2);
+
+        return $year . '-' . $month . '-' . $day;
+    }
+
+    /**
+     * Convert date format mm/dd/yyyy to like Mysql date, for example
+     * `08/16/2017` converts to `2017-08-16`
+     *
+     * @param $usaSlashesDate
+     * @return string
+     * @throws \Exception
+     */
+    public static function dateFromUsaSlashesToMysql($usaSlashesDate)
+    {
+        if (!preg_match('/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])\/(\d{4})/', $usaSlashesDate)) {
+            throw new \Exception('Not right input date format for ::dateFromUsaSlashesToMysql($usaSlashesDate)');
+        }
+        $day = substr($usaSlashesDate, 3, 2);
+        $month = substr($usaSlashesDate, 0, 2);
+        $year = substr($usaSlashesDate, -4);
 
         return $year . '-' . $month . '-' . $day;
     }

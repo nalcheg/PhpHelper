@@ -8,3 +8,7 @@ Convert `"six digit date"` to like MySQL date format, for example `240316` conve
 ```php
 Helper::dateFromSixDigitsToMysql('240316');
 ```
+Convert date like `08/16/2017` to like MySQL date format, for example `08/16/2017` converts to `2017-08-16`
+```php
+Helper::dateFromUsaSlashesToMysql('08/16/2017');
+```

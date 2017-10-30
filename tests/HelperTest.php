@@ -40,4 +40,17 @@ class HelperTest extends TestCase
         Helper::datetimeFromMysqlToRussian('451316');
     }
 
+    public function testDateFromUsaSlashesToMysql()
+    {
+        $this->assertEquals('2017-08-16', Helper::dateFromUsaSlashesToMysql('08/16/2017'));
+    }
+
+    /**
+     * @expectedException \Exception
+     */
+    public function testDateFromUsaSlashesToMysqlException()
+    {
+        Helper::dateFromUsaSlashesToMysql('08162017');
+    }
+
 }
